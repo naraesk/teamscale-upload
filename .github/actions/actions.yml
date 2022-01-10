@@ -1,0 +1,17 @@
+name: 'Teamscale Upload'
+author: 'CQSE'
+description: 'Uploading to Teamscale'
+inputs:
+  server:
+    description: The url under which the Teamscale server can be reached.
+    required: true
+runs:
+  using: "composite"
+  steps:
+    -uses: dsaltares/fetch-gh-release-asset@master
+      with:
+        repo: "cqse/teamscale-upload"
+        version: "tags/v2.3.0"
+        file: "teamscale-upload-linux.zip"
+        target: "subdir/plague-linux.zip"
+        token: ${{ secrets.GITHUB_TOKEN }}
